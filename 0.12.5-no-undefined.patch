@@ -1,0 +1,30 @@
+--- origsrc/pilot-link-0.12.5/bindings/Tcl/Makefile.am	2007-02-16 20:40:26.000000000 -0600
++++ src/pilot-link-0.12.5/bindings/Tcl/Makefile.am	2010-06-10 23:33:38.014787600 -0500
+@@ -28,7 +28,7 @@ libpitcl_la_LIBADD = 				\
+ 	$(top_builddir)/libpisock/libpisock.la
+ 
+ libpitcl_la_LDFLAGS = \
+-	-export-dynamic -version-info 0:0:0
++	-export-dynamic -no-undefined -version-info 0:0:0
+ 
+ pitclsh_SOURCES = tclAppInit.c
+ 
+--- origsrc/pilot-link-0.12.5/libpisock/Makefile.am	2009-05-24 22:22:55.000000000 -0500
++++ src/pilot-link-0.12.5/libpisock/Makefile.am	2010-06-10 23:14:04.622673400 -0500
+@@ -85,7 +85,7 @@ libpisock_la_LIBADD = \
+ 	@usb_libs@ @PTHREAD_LIBS@ @PTHREAD_CFLAGS@ @BLUEZ_LIBS@
+ 
+ libpisock_la_LDFLAGS = \
+-	-export-dynamic -version-info $(PISOCK_CURRENT):$(PISOCK_REVISION):$(PISOCK_AGE)
++	-export-dynamic -no-undefined -version-info $(PISOCK_CURRENT):$(PISOCK_REVISION):$(PISOCK_AGE)
+ libpisock_la_CFLAGS = $(PIC_LIBS) @PTHREAD_CFLAGS@ @BLUEZ_CFLAGS@
+ 
+ EXTRA_DIST = $(bluetooth_FILES) $(serial_FILES) $(usb_FILES)
+--- origsrc/pilot-link-0.12.5/libpisync/Makefile.am	2005-02-17 13:01:35.000000000 -0600
++++ src/pilot-link-0.12.5/libpisync/Makefile.am	2010-06-10 23:14:04.626673600 -0500
+@@ -14,4 +14,4 @@ libpisync_la_LIBADD = \
+ 	$(ICONV_LIBS)
+ 
+ libpisync_la_LDFLAGS = \
+-	-export-dynamic -version-info $(PISYNC_CURRENT):$(PISYNC_REVISION):$(PISYNC_AGE)
++	-export-dynamic -no-undefined -version-info $(PISYNC_CURRENT):$(PISYNC_REVISION):$(PISYNC_AGE)

@@ -1,0 +1,69 @@
+inherit java perl distutils tcl
+
+DESCRIPTION="Palm handheld connection library and tools"
+HOMEPAGE="http://www.pilot-link.org/"
+SRC_URI="http://downloads.pilot-link.org/${P}.tar.bz2"
+
+PATCH_URI="
+	mirror://portage/app-pda/${PN}/files/${PN}-0.12.2-werror_194921.patch
+	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libusb-compat-usb_open.patch
+	0.12.5-no-undefined.patch
+"
+
+PKG_NAMES="${PN} libpisock9 libpisync1 libpisock-devel java-${PN} perl-PDA-Pilot python-pisock"
+pilot_link_CONTENTS="usr/bin/pilot-* usr/share/doc/ usr/share/${PN}/"
+libpisock9_CONTENTS="usr/bin/cygpisock-9.dll"
+libpisync1_CONTENTS="usr/bin/cygpisync-1.dll"
+libpisock_devel_CONTENTS="--exclude=*pitcl* usr/include/ usr/lib/lib*
+                          usr/lib/pkgconfig/ usr/share/aclocal/"
+java_pilot_link_CONTENTS="usr/bin/cygjpisock.dll ${JAVA_DIR#/} ${JAVADOC_DIR#/}"
+perl_PDA_Pilot_CONTENTS="${PERL_VENDORARCH#/} usr/share/man/man3/"
+python_pisock_CONTENTS=${PYTHON_SITELIB#/}
+
+CYGCONF_ARGS="
+	--disable-compile-werror
+	--enable-conduits
+	--enable-libusb
+"
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+	cd ${B}
+	cygconf
+	cygmake
+
+	lndir ${S}/bindings ${B}/bindings
+
+	cd ${B}/bindings/Java
+	cygmake clean
+	cygmake java_jar JAVAC=${JAVAC} JAR=${JAR}
+	${CXX} -shared -o cygjpisock.dll -I${S}/include -L${B}/libpisock/.libs *.c -lpisock || error "JNI compile failed"
+	cygjavadoc -d javadoc -subpackages org
+
+	cd ${B}/bindings/Perl
+	rm -fr blib/
+	perl_compile
+
+	cd ${B}/bindings/Python
+	rm -fr build/
+	distutils_compile
+}
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	cd ${B}/bindings/Java
+	dobin *.dll
+	dojar *.jar
+	dojavadoc javadoc
+
+	cd ${B}/bindings/Perl
+	perl_install
+	perl_postinst
+
+	cd ${B}/bindings/Python
+	distutils_install
+	python_optimize
+}
