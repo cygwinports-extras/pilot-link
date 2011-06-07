@@ -1,5 +1,5 @@
 category: Python
-requires: libgcc1 libpisock9 python
+requires: libpisock9 python
 external-source: pilot-link
 sdesc: "Palm handheld connection library (Python bindings)"
 ldesc: "pilot-link is a suite of tools used to connect your Palm or 

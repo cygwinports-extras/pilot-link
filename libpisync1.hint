@@ -1,5 +1,5 @@
 category: Libs
-requires: libgcc1 libiconv2 libpisock9
+requires: libiconv2 libpisock9
 external-source: pilot-link
 sdesc: "Palm handheld synchronization library (runtime)"
 ldesc: "pilot-link is a suite of tools used to connect your Palm or 

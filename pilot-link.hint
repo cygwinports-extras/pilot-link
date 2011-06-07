@@ -1,5 +1,5 @@
 category: Utils
-requires: libgcc1 libpisock9 libpng12 libpopt0 libreadline7
+requires: libpisock9 libpng14 libpopt0 libreadline7
 sdesc: "Palm handheld synchronization tools"
 ldesc: "pilot-link is a suite of tools used to connect your Palm or 
 PalmOS compatible handheld with Unix, Linux, and any other 

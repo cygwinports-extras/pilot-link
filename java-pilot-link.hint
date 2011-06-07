@@ -1,5 +1,5 @@
 category: Java
-requires: libgcc1 libpisock9 libstdc++6
+requires: libpisock9 libstdc++6
 external-source: pilot-link
 sdesc: "Palm handheld connection library (Java bindings)"
 ldesc: "pilot-link is a suite of tools used to connect your Palm or 

@@ -7,6 +7,7 @@ SRC_URI="http://downloads.pilot-link.org/${P}.tar.bz2"
 PATCH_URI="
 	mirror://portage/app-pda/${PN}/files/${PN}-0.12.2-werror_194921.patch
 	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libusb-compat-usb_open.patch
+	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libpng14.patch
 	0.12.5-no-undefined.patch
 "
 
@@ -19,6 +20,8 @@ libpisock_devel_CONTENTS="--exclude=*pitcl* usr/include/ usr/lib/lib*
 java_pilot_link_CONTENTS="usr/bin/cygjpisock.dll ${JAVA_DIR#/} ${JAVADOC_DIR#/}"
 perl_PDA_Pilot_CONTENTS="${PERL_VENDORARCH#/} usr/share/man/man3/"
 python_pisock_CONTENTS=${PYTHON_SITELIB#/}
+
+DIFF_EXCLUDES="Makefile.PL Makefile"
 
 CYGCONF_ARGS="
 	--disable-compile-werror
@@ -39,7 +42,7 @@ src_compile() {
 	cygmake clean
 	cygmake java_jar JAVAC=${JAVAC} JAR=${JAR}
 	${CXX} -shared -o cygjpisock.dll -I${S}/include -L${B}/libpisock/.libs *.c -lpisock || error "JNI compile failed"
-	cygjavadoc -d javadoc -subpackages org
+	cygjavadoc -d javadoc -sourcepath . -subpackages org
 
 	cd ${B}/bindings/Perl
 	rm -fr blib/

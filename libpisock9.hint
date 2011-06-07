@@ -1,5 +1,5 @@
 category: Libs
-requires: libgcc1 libusb0.1_4
+requires: libusb0.1_4
 external-source: pilot-link
 sdesc: "Palm handheld connection library (runtime)"
 ldesc: "pilot-link is a suite of tools used to connect your Palm or 
