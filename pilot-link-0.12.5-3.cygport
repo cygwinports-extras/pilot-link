@@ -8,6 +8,7 @@ PATCH_URI="
 	mirror://portage/app-pda/${PN}/files/${PN}-0.12.2-werror_194921.patch
 	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libusb-compat-usb_open.patch
 	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libpng14.patch
+	mirror://portage/app-pda/${PN}/files/${PN}-0.12.5-perl514.patch
 	0.12.5-no-undefined.patch
 "
 
@@ -41,7 +42,7 @@ src_compile() {
 	cd ${B}/bindings/Java
 	cygmake clean
 	cygmake java_jar JAVAC=${JAVAC} JAR=${JAR}
-	${CXX} -shared -o cygjpisock.dll -I${S}/include -L${B}/libpisock/.libs *.c -lpisock || error "JNI compile failed"
+	${CXX} ${CXXFLAGS} -shared -o cygjpisock.dll -I${S}/include -L${B}/libpisock/.libs *.c -lpisock || error "JNI compile failed"
 	cygjavadoc -d javadoc -sourcepath . -subpackages org
 
 	cd ${B}/bindings/Perl
@@ -70,3 +71,5 @@ src_install() {
 	distutils_install
 	python_optimize
 }
+
+KEEP_LA_FILES="none"

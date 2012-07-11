@@ -1,5 +1,5 @@
 category: Libs
-requires: libpisock9 libpisync1 libiconv libusb0.1-devel
+requires: libpisock9 libpisync1
 external-source: pilot-link
 sdesc: "Palm handheld connection library (development)"
 ldesc: "pilot-link is a suite of tools used to connect your Palm or 
