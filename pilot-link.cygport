@@ -1,6 +1,15 @@
 inherit java perl distutils tcl
 
-DESCRIPTION="Palm handheld connection library and tools"
+NAME="pilot-link"
+VERSION=0.12.5
+RELEASE=4
+CATEGORY="Utils"
+SUMMARY="Palm handheld connection library"
+DESCRIPTION="pilot-link is a suite of tools used to connect your Palm or PalmOS
+compatible handheld with Unix, Linux, and any other POSIX-compatible machine.
+pilot-link includes userspace conduits that allow you to syncronize information
+to and from your Palm device, as well as libraries of Palm-compatible functions
+that allow other applications to take advantage of the code included in pilot-link."
 HOMEPAGE="http://www.pilot-link.org/"
 SRC_URI="http://downloads.pilot-link.org/${P}.tar.bz2"
 
@@ -13,13 +22,20 @@ PATCH_URI="
 "
 
 PKG_NAMES="${PN} libpisock9 libpisync1 libpisock-devel java-${PN} perl-PDA-Pilot python-pisock"
+pilot_link_SUMMARY="${SUMMARY% *} tools"
 pilot_link_CONTENTS="usr/bin/pilot-* usr/share/doc/ usr/share/${PN}/"
+libpisock9_SUMMARY="${SUMMARY} (runtime)"
 libpisock9_CONTENTS="usr/bin/cygpisock-9.dll"
+libpisync1_SUMMARY="Palm handheld synchronization library (runtime)"
 libpisync1_CONTENTS="usr/bin/cygpisync-1.dll"
+libpisock_devel_SUMMARY="${SUMMARY} (development)"
 libpisock_devel_CONTENTS="--exclude=*pitcl* usr/include/ usr/lib/lib*
                           usr/lib/pkgconfig/ usr/share/aclocal/"
+java_pilot_link_SUMMARY="${SUMMARY} (Java bindings)"
 java_pilot_link_CONTENTS="usr/bin/cygjpisock.dll ${JAVA_DIR#/} ${JAVADOC_DIR#/}"
+perl_PDA_Pilot_SUMMARY="${SUMMARY} (Perl bindings)"
 perl_PDA_Pilot_CONTENTS="${PERL_VENDORARCH#/} usr/share/man/man3/"
+python_pisock_SUMMARY="${SUMMARY} (Python bindings)"
 python_pisock_CONTENTS=${PYTHON_SITELIB#/}
 
 DIFF_EXCLUDES="Makefile.PL Makefile"
