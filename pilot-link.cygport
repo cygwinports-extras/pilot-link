@@ -2,7 +2,7 @@ inherit java perl distutils tcl
 
 NAME="pilot-link"
 VERSION=0.12.5
-RELEASE=4
+RELEASE=5
 CATEGORY="Utils"
 SUMMARY="Palm handheld connection library"
 DESCRIPTION="pilot-link is a suite of tools used to connect your Palm or PalmOS
@@ -31,10 +31,13 @@ libpisync1_CONTENTS="usr/bin/cygpisync-1.dll"
 libpisock_devel_SUMMARY="${SUMMARY} (development)"
 libpisock_devel_CONTENTS="--exclude=*pitcl* usr/include/ usr/lib/lib*
                           usr/lib/pkgconfig/ usr/share/aclocal/"
+java_pilot_link_CATEGORY="Java"
 java_pilot_link_SUMMARY="${SUMMARY} (Java bindings)"
 java_pilot_link_CONTENTS="usr/bin/cygjpisock.dll ${JAVA_DIR#/} ${JAVADOC_DIR#/}"
+perl_PDA_Pilot_CATEGORY="Perl"
 perl_PDA_Pilot_SUMMARY="${SUMMARY} (Perl bindings)"
 perl_PDA_Pilot_CONTENTS="${PERL_VENDORARCH#/} usr/share/man/man3/"
+python_pisock_CATEGORY="Python"
 python_pisock_SUMMARY="${SUMMARY} (Python bindings)"
 python_pisock_CONTENTS=${PYTHON_SITELIB#/}
 
