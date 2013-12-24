@@ -2,7 +2,7 @@ inherit java perl distutils tcl
 
 NAME="pilot-link"
 VERSION=0.12.5
-RELEASE=5
+RELEASE=6
 CATEGORY="Utils"
 SUMMARY="Palm handheld connection library"
 DESCRIPTION="pilot-link is a suite of tools used to connect your Palm or PalmOS
@@ -11,19 +11,18 @@ pilot-link includes userspace conduits that allow you to syncronize information
 to and from your Palm device, as well as libraries of Palm-compatible functions
 that allow other applications to take advantage of the code included in pilot-link."
 HOMEPAGE="http://www.pilot-link.org/"
-SRC_URI="http://downloads.pilot-link.org/${P}.tar.bz2"
-
+SRC_URI="http://downloads.pilot-link.org/${NAME}-${VERSION}.tar.bz2"
 PATCH_URI="
-	mirror://portage/app-pda/${PN}/files/${PN}-0.12.2-werror_194921.patch
-	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libusb-compat-usb_open.patch
-	mirror://portage/app-pda/${PN}/files/${PN}-0.12.3-libpng14.patch
-	mirror://portage/app-pda/${PN}/files/${PN}-0.12.5-perl514.patch
+	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.2-werror_194921.patch
+	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.3-libusb-compat-usb_open.patch
+	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.3-libpng14.patch
+	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.5-perl514.patch
 	0.12.5-no-undefined.patch
 "
 
-PKG_NAMES="${PN} libpisock9 libpisync1 libpisock-devel java-${PN} perl-PDA-Pilot python-pisock"
+PKG_NAMES="${NAME} libpisock9 libpisync1 libpisock-devel java-${NAME} perl-PDA-Pilot python-pisock"
 pilot_link_SUMMARY="${SUMMARY% *} tools"
-pilot_link_CONTENTS="usr/bin/pilot-* usr/share/doc/ usr/share/${PN}/"
+pilot_link_CONTENTS="usr/bin/pilot-* usr/share/doc/ usr/share/${NAME}/"
 libpisock9_SUMMARY="${SUMMARY} (runtime)"
 libpisock9_CONTENTS="usr/bin/cygpisock-9.dll"
 libpisync1_SUMMARY="Palm handheld synchronization library (runtime)"
