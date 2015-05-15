@@ -28,3 +28,27 @@
  libpisync_la_LDFLAGS = \
 -	-export-dynamic -version-info $(PISYNC_CURRENT):$(PISYNC_REVISION):$(PISYNC_AGE)
 +	-export-dynamic -no-undefined -version-info $(PISYNC_CURRENT):$(PISYNC_REVISION):$(PISYNC_AGE)
+--- origsrc/pilot-link-0.12.5/tests/Makefile.am	2015-05-14 22:18:54.785857400 -0500
++++ src/pilot-link-0.12.5/tests/Makefile.am	2015-05-14 22:23:20.111549500 -0500
+@@ -23,8 +23,8 @@ locationdb_test_LDADD =		\
+ contactsdb_test_SOURCES =	\
+ 	contactsdb-test.c
+ contactsdb_test_LDADD =		\
+-	$(top_builddir)/libpisock/libpisock.la  \
+-	$(top_builddir)/src/libpiuserland.la
++	$(top_builddir)/src/libpiuserland.la	\
++	$(top_builddir)/libpisock/libpisock.la
+ 
+ dlp_test_SOURCES =		\
+ 	dlp-test.c
+@@ -34,8 +34,8 @@ dlp_test_LDADD =		\
+ vfs_test_SOURCES =		\
+ 	vfs-test.c
+ vfs_test_LDADD =		\
+-	$(top_builddir)/libpisock/libpisock.la  \
+-	$(top_builddir)/src/libpiuserland.la
++	$(top_builddir)/src/libpiuserland.la	\
++	$(top_builddir)/libpisock/libpisock.la
+ 
+ versamail_test_SOURCES =	\
+ 	versamail-test.c

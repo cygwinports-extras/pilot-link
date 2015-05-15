@@ -1,0 +1,10 @@
+--- origsrc/pilot-link-0.12.5/include/pi-util.h	2015-05-14 22:18:54.617836100 -0500
++++ src/pilot-link-0.12.5/include/pi-util.h	2015-05-14 22:21:18.621622200 -0500
+@@ -31,6 +31,7 @@ extern "C" {
+ #endif
+ 
+ #include "pi-args.h"
++#include <sys/time.h>	/* for struct timespec */
+ 
+ /* pi_mktag Turn a sequence of characters into a long (er.. 32 bit quantity)
+             like those used on the PalmOS device to identify creators and

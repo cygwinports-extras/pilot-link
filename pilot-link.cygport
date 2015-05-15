@@ -22,6 +22,7 @@ PATCH_URI="
 	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-ftbfs-f19.patch
 	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-ftbfs-f21.patch
 	0.12.5-no-undefined.patch
+	0.12.5-cygwin-compile.patch
 "
 
 PKG_NAMES="${NAME} libpisock9 libpisync1 libpisock-devel java-${NAME} perl-PDA-Pilot python-pisock"
