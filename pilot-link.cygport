@@ -2,7 +2,7 @@ inherit java perl distutils tcl
 
 NAME="pilot-link"
 VERSION=0.12.5
-RELEASE=6
+RELEASE=7
 CATEGORY="Utils"
 SUMMARY="Palm handheld connection library"
 DESCRIPTION="pilot-link is a suite of tools used to connect your Palm or PalmOS
@@ -13,10 +13,14 @@ that allow other applications to take advantage of the code included in pilot-li
 HOMEPAGE="http://www.pilot-link.org/"
 SRC_URI="http://downloads.pilot-link.org/${NAME}-${VERSION}.tar.bz2"
 PATCH_URI="
-	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.2-werror_194921.patch
-	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.3-libusb-compat-usb_open.patch
-	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.3-libpng14.patch
-	mirror://portage/app-pda/${NAME}/files/${NAME}-0.12.5-perl514.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.1-var.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.2-open.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.3-clio.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-mp.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-redefinePerlsymbols.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-compiler_warnings.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-ftbfs-f19.patch
+	http://pkgs.fedoraproject.org/cgit/pilot-link.git/plain/pilot-link-0.12.5-ftbfs-f21.patch
 	0.12.5-no-undefined.patch
 "
 
