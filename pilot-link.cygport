@@ -2,7 +2,7 @@ inherit java perl distutils tcl
 
 NAME="pilot-link"
 VERSION=0.12.5
-RELEASE=7
+RELEASE=8
 CATEGORY="Utils"
 SUMMARY="Palm handheld connection library"
 DESCRIPTION="pilot-link is a suite of tools used to connect your Palm or PalmOS
